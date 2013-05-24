@@ -20,6 +20,8 @@ gem 'jquery-rails', '2.2.1'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
+gem 'bootstrap-sass', '2.3.1.0'
+
 group :doc do
   gem 'sdoc', require: false
 end
