@@ -1,36 +1,31 @@
+<% @recipes.each do |recipe| %>
+  <div class="span3 galery">
+  <div class="menu-galery">
+    <ul>
+      <li><a href="detail.html" rel="tooltip" title="Detail"><i class="iconbig-search"></i></a></li>
+      <li><a href="detail.html" rel="tooltip" title="Add Comment"><i class="iconbig-speak"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Download"><i class="iconbig-download"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Like"><i class="iconbig-black-star"></i></a></li>
+    </ul>
+  </div>
+  <div class="liquid-name"><%= recipe.name %></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Instruction</th>
-      <th>Description</th>
-      <th>Likes</th>
-      <th>Category</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="image-galery"><a class="group" rel="group1"><%= image_tag "1_b.jpg" %></div>
+  <div class="count-galery">
+      <ul>
+        <li><i class="icon-comment"></i> 5</li>
+        <li><i class="icon-download-alt"></i> 7</li>
+        <li><i class="icon-star"></i> 2</li>
+        <li><i class="icon-eye-open"></i> 20</li>
+      </ul>
+  </div>
+  <div class="tags-galery">
+      <p><i class="icon-tags"></i> Tags : <a href="#">Building</a>, <a href="#">Tower</a>, 
+      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a></p>
+  </div>
+</div>
+<% end %>
 
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= recipe.instruction %></td>
-        <td><%= recipe.description %></td>
-        <td><%= recipe.likes %></td>
-        <td><%= recipe.category %></td>
-        <td><%= recipe.user_id %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Recipe', new_recipe_path %>
+

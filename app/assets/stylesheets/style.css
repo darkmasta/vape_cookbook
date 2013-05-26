@@ -163,7 +163,7 @@
     background:#fff;
     border:1px solid #ccc;
     border-bottom: none;
-    height:105px;
+    height:121px;
     padding:15px;
 }
 
@@ -178,7 +178,7 @@
     -moz-box-shadow:0 0 1px 1px #ccc;
     -o-box-shadow:0 0 1px 1px #ccc;
     -webkit-box-shadow:0 0 1px 1px #ccc;
-    height:380px;
+    height:410px;
     margin-bottom:30px;
     background:#fff;
 }
@@ -242,6 +242,15 @@
     float:left;
     margin-left: -5px;
     margin-right: 20px;
+}
+
+.liquid-name{
+  width: 225px;
+  margin: 5px auto;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .tags-galery{

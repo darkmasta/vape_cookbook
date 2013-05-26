@@ -17,21 +17,12 @@
   <body>
     <%= render 'layouts/header' %>
     
+    
     <div class="container">
       <div class="row">
         <%= render 'layouts/navigation' %>
           
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-        <%= render 'layouts/menu_galery' %>
-          
+        <%= yield %>
       </div>
     </div>
 
@@ -40,10 +31,7 @@
     <%= render 'layouts/pagination' %>
     <%= render 'layouts/footer'%>
       
-      <!--  
-      <div class="span9">
-        <%= yield %>
-      </div>
-      -->
+        
+      
   </body>
 </html>
