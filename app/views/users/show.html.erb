@@ -1,3 +1,6 @@
+<%= @user.email %>
+
+
 <% if @user.recipes.any? %>
   
  <% @user.recipes.each do |recipe| %>
@@ -7,7 +10,7 @@
       <li><a href="detail.html" rel="tooltip" title="Detaylar"><i class="iconbig-search"></i></a></li>
       <li><a href="detail.html" rel="tooltip" title="Yorum Ekle"><i class="iconbig-speak"></i></a></li>
       <li><a href="#" rel="tooltip" title="Indir"><i class="iconbig-download"></i></a></li>
-      <li><a href="#" rel="tooltip" title="Like"><i class="iconbig-black-star"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Beğen"><i class="iconbig-black-star"></i></a></li>
     </ul>
   </div>
   <div class="liquid-name"><%= recipe.name %></div>

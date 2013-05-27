@@ -6,7 +6,7 @@ VapeCookbook::Application.routes.draw do
   root to: 'recipes#index'
   
   match '/about',    to: 'static_pages#about',    via: 'get'
-
+  match "/users/:id" => "user#show", via: 'get'
   
   
 

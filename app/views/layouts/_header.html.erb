@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to "vape cookbook", '#', id: "logo" %>
+          <%= link_to "buhar mutfağı", root_path, id: "logo" %>
           <div class="nav-collapse">
             <ul class="nav">
               
@@ -14,32 +14,24 @@
             <ul class="nav pull-right">
         
             <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">User settings <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-              </li>     
+                <li><%= link_to 'Profili Duzenle', edit_user_registration_path %></li>
+                <li><%= link_to 'Tarifleri Goruntule', user_path(current_user.id) %></li>  
+                <li><%= link_to 'Cikis Yap', destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li class="divider-vertical"></li>
             
-            
-            <li><i class="icon-lock"></i><%= link_to "Sign up", new_user_registration_path %></li>
+
+            <li><a href="<%= new_user_registration_url%>"><i class="icon-lock"></i>Kayıt Ol</a></li>
             <li class="divider-vertical"></li>
-            
-            <li><i class="icon-edit"><%= link_to "Login", new_user_session_path %></i></li>
+
+            <li><a href="<%= new_user_session_path %>"><i class="icon-edit"></i>Giris Yap</a></li>
             <li class="divider-vertical"></li>  
             <% end%>
             
             
             
             <form class="navbar-search pull-right" action="">
-                <input type="text" class="search-query span2" placeholder="Search" required>
+                <input type="text" class="search-query span2" placeholder="Tarif Ara" required>
             </form>    
             
           </ul>
