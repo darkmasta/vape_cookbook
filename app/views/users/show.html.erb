@@ -1,1 +1,31 @@
-<%= @user.email %>
+<% if @user.recipes.any? %>
+  
+ <% @user.recipes.each do |recipe| %>
+  <div class="span3 galery">
+  <div class="menu-galery">
+    <ul>
+      <li><a href="detail.html" rel="tooltip" title="Detaylar"><i class="iconbig-search"></i></a></li>
+      <li><a href="detail.html" rel="tooltip" title="Yorum Ekle"><i class="iconbig-speak"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Indir"><i class="iconbig-download"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Like"><i class="iconbig-black-star"></i></a></li>
+    </ul>
+  </div>
+  <div class="liquid-name"><%= recipe.name %></div>
+
+  <div class="image-galery"><a class="group" rel="group1"><%= image_tag "1_b.jpg" %></div>
+  <div class="count-galery">
+      <ul>
+        <li><i class="icon-comment"></i> 5</li>
+        <li><i class="icon-download-alt"></i> 7</li>
+        <li><i class="icon-star"></i> 2</li>
+        <li><i class="icon-eye-open"></i> 20</li>
+      </ul>
+  </div>
+  <div class="tags-galery">
+      <p><i class="icon-tags"></i> Tags : <a href="#">Building</a>, <a href="#">Tower</a>, 
+      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a></p>
+  </div>
+</div>
+<% end %> 
+
+<% end %>

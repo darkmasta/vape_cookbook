@@ -1,34 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="span3 galery">
+  <div class="menu-galery">
+    <ul>
+      <li><a href="detail.html" rel="tooltip" title="Detaylar"><i class="iconbig-search"></i></a></li>
+      <li><a href="detail.html" rel="tooltip" title="Yorum Ekle"><i class="iconbig-speak"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Indir"><i class="iconbig-download"></i></a></li>
+      <li><a href="#" rel="tooltip" title="Beğen"><i class="iconbig-black-star"></i></a></li>
+    </ul>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
-
-<p>
-  <strong>Instruction:</strong>
-  <%= @recipe.instruction %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @recipe.description %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @recipe.likes %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @recipe.category %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+  <div class="image-galery"><a class="group" rel="group1"><%= image_tag "1_b.jpg" %></div>
+  <div class="count-galery">
+      <ul>
+        <li><i class="icon-comment"></i> 5</li>
+        <li><i class="icon-download-alt"></i> 7</li>
+        <li><i class="icon-star"></i> 2</li>
+        <li><i class="icon-eye-open"></i> 20</li>
+      </ul>
+  </div>
+  <div class="tags-galery">
+      <p><i class="icon-tags"></i> Taglar : <a href="#">Building</a>, <a href="#">Tower</a>, 
+      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a></p>
+  </div>
+</div> 
