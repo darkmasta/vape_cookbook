@@ -17,10 +17,13 @@
   <body>
     <%= render 'layouts/header' %>
     
-    
     <div class="container">
       <div class="row">
         <%= render 'layouts/navigation' %>
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+        
           
         <%= yield %>
       </div>

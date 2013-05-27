@@ -6,34 +6,42 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="index.html"><img src="img/logo.png"/></a>
+          <%= link_to "vape cookbook", '#', id: "logo" %>
           <div class="nav-collapse">
             <ul class="nav">
-			  <li class="divider-vertical"></li>
-              <li><a href="about.html">About</a></li>
-			  <li class="divider-vertical"></li>
-              <form class="navbar-search pull-left" action="">
-                <input type="text" class="search-query span2" placeholder="Search" required>
-              </form>
-			  <li class="divider-vertical"></li>
+              
             </ul>
             <ul class="nav pull-right">
-            <li class="divider-vertical"></li>
-            <li><a href="signin.html"><i class="icon-lock"></i> Sign in</a></li>
-            <li class="divider-vertical"></li>
-            <li><a href="signup.html"><i class="icon-edit"></i> Sign up</a></li>
-            <li class="divider-vertical"></li>
+        
+            <% if user_signed_in? %>
+              Logged in as <strong><%= current_user.email %></strong>.
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">User settings <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Separated link</a></li>
               </ul>
-            </li>
+              </li>     
+            <% else %>
             <li class="divider-vertical"></li>
+            
+            
+            <li><i class="icon-lock"></i><%= link_to "Sign up", new_user_registration_path %></li>
+            <li class="divider-vertical"></li>
+            
+            <li><i class="icon-edit"><%= link_to "Login", new_user_session_path %></i></li>
+            <li class="divider-vertical"></li>  
+            <% end%>
+            
+            
+            
+            <form class="navbar-search pull-right" action="">
+                <input type="text" class="search-query span2" placeholder="Search" required>
+            </form>    
+            
           </ul>
           </div><!--/.nav-collapse -->
         </div>

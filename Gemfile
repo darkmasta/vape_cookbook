@@ -25,3 +25,5 @@ gem 'bootstrap-sass', '2.3.1.0'
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem 'devise', github: 'plataformatec/devise'
