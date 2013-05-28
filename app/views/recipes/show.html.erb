@@ -1,22 +1,15 @@
-<div class="span3 galery">
-  <div class="menu-galery">
-    <ul>
-      <li><a href="detail.html" rel="tooltip" title="Detaylar"><i class="iconbig-search"></i></a></li>
-      <li><a href="detail.html" rel="tooltip" title="Yorum Ekle"><i class="iconbig-speak"></i></a></li>
-      <li><a href="#" rel="tooltip" title="Beğen"><i class="iconbig-black-star"></i></a></li>
-    </ul>
-  </div>
+<div class="span9">
+  <div class="hero-unit">
+    <h2><%= @recipe.name %></h2>
+    <br/ >
+    <%= @recipe.description %>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+      <p><i class="icon-tags"></i> Taglar : <%= raw @recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
+   </div>
 
-  <div class="liquid-name"><%= @recipe.name %></div>
-  <div class="image-galery"><a class="group" rel="group1"><%= image_tag "1_b.jpg" %></div>
-  <div class="count-galery">
-      <ul>
-        <li><i class="icon-comment"></i> 5</li>
-        <li><i class="icon-star"></i> 2</li>
-        <li><i class="icon-eye-open"></i> 20</li>
-      </ul>
-  </div>
-  <div class="tags-galery">
-    <p><i class="icon-tags"></i> Taglar : <%= raw @recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
-  </div>
+   <%= render "comments/comments" %>
+   <%= render "comments/form" %>
+
 </div> 

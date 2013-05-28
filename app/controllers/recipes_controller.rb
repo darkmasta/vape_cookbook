@@ -16,6 +16,9 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
+    @commentable = @recipe
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /recipes/new

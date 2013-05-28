@@ -1,7 +1,12 @@
 VapeCookbook::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "Giris Yap", sign_out: "Cikis Yap"}
-  resources :users
-  resources :recipes
+  resources :users do
+    resources :comments
+  end
+  
+  resources :recipes do
+    resources :comments
+  end
 
   root to: 'recipes#index'
   

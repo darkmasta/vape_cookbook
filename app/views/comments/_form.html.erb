@@ -1,0 +1,25 @@
+<div class="span9">
+<h1>Comments#new</h1>
+
+<%= form_for [@commentable, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="error_messages">
+      <h2>Please correct the following errors.</h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @comment.user_id = current_user.id %>
+  <div class="field">
+    <%= f.text_area :content, rows: 8 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div> 
