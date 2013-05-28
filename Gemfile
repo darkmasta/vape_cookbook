@@ -27,3 +27,4 @@ group :doc do
 end
 
 gem 'devise', github: 'plataformatec/devise'
+gem 'acts-as-taggable-on', '2.4.1'

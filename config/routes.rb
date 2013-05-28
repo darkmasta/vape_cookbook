@@ -8,6 +8,7 @@ VapeCookbook::Application.routes.draw do
   match '/about',    to: 'static_pages#about',    via: 'get'
   match "/users/:id" => "user#show", via: 'get'
   
+  match 'tags/:tag', to: 'recipes#index', as: :tag, via: 'get'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
