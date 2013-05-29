@@ -1,6 +1,9 @@
 <div class="span9">
   <div class="hero-unit">
     <h2><%= @recipe.name %></h2>
+    <br />
+    <h3><%= @recipe.views %></h3>
+    <h3><%= request.remote_ip %></h3>
     <br/ >
     <%= @recipe.description %>
     <br/><br/>

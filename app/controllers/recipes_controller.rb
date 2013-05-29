@@ -8,7 +8,13 @@ class RecipesController < ApplicationController
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag])      
     else
-      @recipes = Recipe.all
+      if user_signed_in?
+        current_user.ip_address = request.remote_ip
+        current_user.save
+        @recipes = Recipe.all
+      else
+        @recipes = Recipe.all
+      end
     end
   end
 
@@ -16,6 +22,10 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
+    if user_signed_in? && current_user.ip_address != request.remote_ip 
+      @recipe.views += 1
+      @recipe.save
+    end
     @commentable = @recipe
     @comments = @commentable.comments
     @comment = Comment.new
@@ -78,6 +88,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :instruction, :description, :likes, :category, :tag_list)
+      params.require(:recipe).permit(:name, :instruction, :description, :likes, :category, :tag_list, :views)
     end
 end

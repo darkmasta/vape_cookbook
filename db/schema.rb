@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130528203451) do
+ActiveRecord::Schema.define(version: 20130529195242) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20130528203451) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "views"
   end
 
   create_table "taggings", force: true do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20130528203451) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ip_address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
