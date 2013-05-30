@@ -6,5 +6,6 @@ class Recipe < ActiveRecord::Base
   acts_as_taggable
 
 
-
+  scope :view_count, -> { Recipe.order("views DESC") }
+  scope :like_count, -> { Recipe.order("likes DESC") }
 end

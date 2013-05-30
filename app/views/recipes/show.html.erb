@@ -4,6 +4,7 @@
     <br />
     <h3><%= @recipe.views %></h3>
     <h3><%= request.remote_ip %></h3>
+    <h3>Yorum sayisi: <%= @recipe.comments.count %></h3>
     <br/ >
     <%= @recipe.description %>
     <br/><br/>

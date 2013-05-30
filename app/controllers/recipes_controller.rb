@@ -14,9 +14,24 @@ class RecipesController < ApplicationController
         @recipes = Recipe.all
       else
         @recipes = Recipe.all
-      end
+      end 
     end
   end
+
+  def view_count
+    @recipes = Recipe.all.view_count    # view_count scope
+    render 'index'
+  end
+
+  def like_count
+    @recipes = Recipe.all.like_count   # like_count scope
+    render 'index'
+  end
+
+  def comment_count 
+    
+  end
+
 
   # GET /recipes/1
   # GET /recipes/1.json

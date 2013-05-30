@@ -14,7 +14,10 @@ VapeCookbook::Application.routes.draw do
   match "/users/:id" => "user#show", via: 'get'
   
   match 'tags/:tag', to: 'recipes#index', as: :tag, via: 'get'
-  
+
+  match '/views/',   to:   'recipes#view_count',    via:  'get'  
+  match '/likes',    to:   'recipes#like_count',    via:  'get'
+  match '/comments', to:   'recipes#comment_count', via:  'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

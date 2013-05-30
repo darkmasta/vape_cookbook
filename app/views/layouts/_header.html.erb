@@ -14,9 +14,9 @@
             <ul class="nav pull-right">
         
             <% if user_signed_in? %>
-                <li><%= link_to 'Profili Duzenle', edit_user_registration_path %></li>
-                <li><%= link_to 'Tarifleri Goruntule', user_path(current_user.id) %></li>  
-                <li><%= link_to 'Cikis Yap', destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to 'Profil', edit_user_registration_path %></li>
+                <li><%= link_to 'Tarifler', user_path(current_user.id) %></li>  
+                <li><%= link_to 'Çıkış', destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li class="divider-vertical"></li>
             
