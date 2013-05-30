@@ -8,4 +8,5 @@ class Recipe < ActiveRecord::Base
 
   scope :view_count, -> { Recipe.order("views DESC") }
   scope :like_count, -> { Recipe.order("likes DESC") }
+  scope :new_items,  -> { Recipe.order("created_at DESC") }
 end

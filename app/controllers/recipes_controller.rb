@@ -29,7 +29,13 @@ class RecipesController < ApplicationController
   end
 
   def comment_count 
-    
+    @recipes = Recipe.all
+    render 'index'
+  end
+
+  def new_recipes
+    @recipes = Recipe.new_items        # new recipes scope
+    render 'index'
   end
 
 
