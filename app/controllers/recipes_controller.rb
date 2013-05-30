@@ -6,14 +6,14 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     if params[:tag]
-      @recipes = Recipe.tagged_with(params[:tag])      
+      @recipes = Recipe.paginate(page: params[:page], per_page: 10).tagged_with(params[:tag])      
     else
       if user_signed_in?
         current_user.ip_address = request.remote_ip
         current_user.save
-        @recipes = Recipe.all
+        @recipes = Recipe.paginate(page: params[:page], per_page: 5)
       else
-        @recipes = Recipe.all
+        @recipes = Recipe.paginate(page: params[:page], per_page: 5)
       end 
     end
   end
@@ -48,7 +48,7 @@ class RecipesController < ApplicationController
       @recipe.save
     end
     @commentable = @recipe
-    @comments = @commentable.comments
+    @comments = @commentable.comments.paginate(page: params[:page], per_page: 2)
     @comment = Comment.new
   end
 

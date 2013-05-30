@@ -4056,9 +4056,7 @@ input[type="submit"].btn.btn-mini {
 .pagination .disabled span,
 .pagination .disabled a,
 .pagination .disabled a:hover {
-  color: #999999;
-  cursor: default;
-  background-color: transparent;
+  display: none;
 }
 
 .pagination li:first-child a {
@@ -4081,6 +4079,7 @@ input[type="submit"].btn.btn-mini {
 .pagination-right {
   text-align: right;
 }
+
 
 .pager {
   margin-bottom: 18px;

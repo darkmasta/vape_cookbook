@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :load_commentable
 
   def index
-    @comments = @commentable.comments
+    @comments = @commentable.comments.paginate(page: params[:page], per_page: 2)
   end
 
   def new

@@ -1,3 +1,4 @@
+
 <%= render 'layouts/navigation' %>
 
 <% @recipes.each do |recipe| %>
@@ -25,6 +26,9 @@
 </div>
 <% end %>
 
+<div class="span12">
+  <%= will_paginate @recipes, previous_label: "<", next_label: ">" %>
+</div> 
 
-
+<%#= render 'layouts/fake_pagination'%>
 
