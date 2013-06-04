@@ -1,4 +1,8 @@
 <% @comments.each do |comment| %>
-  <%= simple_format comment.content %>                            
-
+  <div class="well well-small">
+    <% @user = User.find(comment.user_id) %> 
+    <div class="pull-right"><%= @user.email %></div>
+    <%= simple_format comment.content %>                            
+    
+  </div>
 <% end %>
