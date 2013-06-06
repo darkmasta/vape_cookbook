@@ -1,41 +1,49 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /recipes
   # GET /recipes.json
   def index
     if params[:tag]
       @recipes = Recipe.paginate(page: params[:page], per_page: 10).tagged_with(params[:tag])      
-    else
-      if user_signed_in?
-        current_user.ip_address = request.remote_ip
-        current_user.save
-        @recipes = Recipe.paginate(page: params[:page], per_page: 5)
-      else
-        @recipes = Recipe.paginate(page: params[:page], per_page: 5)
-      end 
+    else      
+     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
     end
   end
 
   def view_count
-    @recipes = Recipe.all.view_count    # view_count scope
+    @recipes = Recipe.paginate(page: params[:page], per_page: 10).view_count    # view_count scope
     render 'index'
   end
 
   def like_count
-    @recipes = Recipe.all.like_count   # like_count scope
+    @recipes = Recipe.paginate(page: params[:page], per_page: 10).like_count   # like_count scope
     render 'index'
   end
 
   def comment_count 
-    @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page], per_page: 10)
     render 'index'
   end
 
   def new_recipes
-    @recipes = Recipe.new_items        # new recipes scope
+    @recipes = Recipe.paginate(page: params[:page], per_page: 10).new_items        # new recipes scope
     render 'index'
+  end
+
+  def begen
+    @recipe = Recipe.find(params[:id])
+    @recipes = Recipe.paginate(page: params[:page], per_page: 5)
+    if current_user.ip_address != request.remote_ip
+      current_user.ip_address = request.remote_ip
+      @recipe.increment(:likes, by = 1)
+      @recipe.save
+      render 'index'      
+    else
+      render 'index'
+    end
   end
 
 
@@ -43,8 +51,9 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-    if user_signed_in? && current_user.ip_address != request.remote_ip 
-      @recipe.views += 1
+    if user_signed_in? && current_user.ip_address != request.remote_ip
+      current_user.ip_address = request.remote_ip
+      @recipe.increment(:views, by = 1)
       @recipe.save
     end
     @commentable = @recipe
@@ -110,5 +119,16 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :instruction, :description, :likes, :category, :tag_list, :views)
+    end
+
+
+    def correct_user # 
+      @recipe = Recipe.find(params[:id])
+      @user = @recipe.user
+      if current_user == @user
+        true
+      else
+        redirect_to(root_path)
+      end
     end
 end

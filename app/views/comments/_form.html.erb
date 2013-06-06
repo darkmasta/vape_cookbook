@@ -1,6 +1,4 @@
 <div class="span9">
-<h1>Comments#new</h1>
-
 <%= form_for [@commentable, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div class="error_messages">
@@ -18,7 +16,7 @@
     <%= f.text_area :content, rows: 8 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Yorum Ekle" %>
   </div>
 <% end %>
 

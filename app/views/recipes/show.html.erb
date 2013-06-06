@@ -1,18 +1,17 @@
 <div class="span9">
   <div class="hero-unit">
-    <h2><%= @recipe.name %></h2>
-    <br />
-    <h3><%= @recipe.views %></h3>
-    <h3><%= request.remote_ip %></h3>
-    <h3>Yorum sayisi: <%= @recipe.comments.count %></h3>
+    <h2 class=><%= @recipe.name %></h2>
+    <h3 class="pull-right">Begenilme: <%= @recipe.likes %></h3>
     <br/ >
     <%= @recipe.description %>
     <br/><br/>
+    <%= @recipe.instruction %>
     <br/><br/>
     <br/><br/>
       <p><i class="icon-tags"></i> Taglar : <%= raw @recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
    </div>
 
+   <h1>Yorumlar</h1>
    <%= render "comments/comments" %>
    <div class="span12">
       <%= will_paginate @comments, previous_label: "<", next_label: ">" %>

@@ -1,38 +1,53 @@
+<% if @user.nick.empty? %>
+  <%= link_to "Nickinizi Belirleyin", edit_user_path %>
+<% end %>
+
+
+
+
 <%= @user.email %>
 <%= @user.ip_address %>
 
 
-<% if @user.recipes.any? %>
+<% if !@recipes.empty? %>
   
- <% @user.recipes.each do |recipe| %>
+ <% @recipes.each do |recipe| %>
   <div class="span3 galery">
   <div class="menu-galery">
     <ul>
-      <li><a href="detail.html" rel="tooltip" title="Detaylar"><i class="iconbig-search"></i></a></li>
-      <li><a href="detail.html" rel="tooltip" title="Yorum Ekle"><i class="iconbig-speak"></i></a></li>
-      <li><a href="#" rel="tooltip" title="Indir"><i class="iconbig-download"></i></a></li>
-      <li><a href="#" rel="tooltip" title="Beğen"><i class="iconbig-black-star"></i></a></li>
+      <li><%=link_to '<i class="iconbig-search" title="Detaylar"></i>'.html_safe,
+          {controller: "recipes", action: "show", id: recipe } %></li>
+      <li><%=link_to '<i class="iconbig-speak" title="Yorum Ekle"></i>'.html_safe,
+          {controller: "recipes", action: "show", id: recipe } %></li>
+      <li><%= link_to  '<i class="iconbig-black-star" title="Begen"></i>'.html_safe,   
+          {controller: "recipes", action: "begen", id: recipe } %></li>
     </ul>
   </div>
   <div class="liquid-name"><%= recipe.name %></div>
 
-  <div class="image-galery"><a class="group" rel="group1"><%= image_tag "1_b.jpg" %></div>
+  <div class="image-galery"><%= link_to image_tag("1_b.jpg"), recipe %></div>
   <div class="count-galery">
       <ul>
-        <li><i class="icon-comment"></i> 5</li>
-        <li><i class="icon-download-alt"></i> 7</li>
-        <li><i class="icon-star"></i> 2</li>
-        <li><i class="icon-eye-open"></i> 20</li>
+        <li><i class="icon-comment"></i> <%= recipe.comments.count %></li>
+        <li><i class="icon-star"></i> <%= recipe.likes%></li>
+        <li><i class="icon-eye-open"></i> <%= recipe.views%></li>
       </ul>
   </div>
   <div class="tags-galery">
-      <p><i class="icon-tags"></i> Tags : <a href="#">Building</a>, <a href="#">Tower</a>, 
-      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a></p>
+      <p><i class="icon-tags"></i> Taglar : <%= raw recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
   </div>
 </div>
-<% end %> 
+  <% end %>
+
+  <div class="span12">
+    <%#= will_paginate @recipes, previous_label: "<", next_label: ">" %>
+  </div>  
 
 <% end %>
 
-<%= render "comments/comments" %>
+<div class="span9">
+  <%= render "comments/comments" %> 
+</div>
+
+
 <%= render "comments/form" %>

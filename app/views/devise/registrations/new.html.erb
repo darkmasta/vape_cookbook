@@ -6,11 +6,15 @@
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
+  
+  <div><%= f.label :Nick %><br />
+    <%= f.text_field :nick %></div>
 
-  <div><%= f.label :password %><br />
+
+  <div><%= f.label :Sifre %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :Sifre_Tekrar %><br />
   <%= f.password_field :password_confirmation %></div>
 
   <div><%= f.submit "Kayit ol" %></div>
