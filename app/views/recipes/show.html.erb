@@ -2,6 +2,11 @@
   <div class="hero-unit">
     <h2 class=><%= @recipe.name %></h2>
     <h3 class="pull-right">Begenilme: <%= @recipe.likes %></h3>
+    <h2><%= @recipe.name %></h2>
+    <br />
+    <h3><%= @recipe.views %></h3>
+    <h3>Yorum sayisi: <%= @recipe.comments.count %></h3>
+    <h3>Begenilme: <%= @recipe.likes %></h3>
     <br/ >
     <%= @recipe.description %>
     <br/><br/>
