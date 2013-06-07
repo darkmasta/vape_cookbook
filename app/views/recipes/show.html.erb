@@ -1,12 +1,12 @@
+<div class="row-fluid">
 <div class="span9">
   <div class="hero-unit">
-    <h2 class=><%= @recipe.name %></h2>
-    <h3 class="pull-right">Begenilme: <%= @recipe.likes %></h3>
-    <h2><%= @recipe.name %></h2>
+    <h3 id="center"><%= @recipe.name %></h3>
+    
     <br />
-    <h3><%= @recipe.views %></h3>
-    <h3>Yorum sayisi: <%= @recipe.comments.count %></h3>
-    <h3>Begenilme: <%= @recipe.likes %></h3>
+    
+    
+   
     <br/ >
     <%= @recipe.description %>
     <br/><br/>
@@ -16,11 +16,33 @@
       <p><i class="icon-tags"></i> Taglar : <%= raw @recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
    </div>
 
+   </div>
+
+   <div class="span3 float-right">
+     <div class="hero-unit">
+       <h3>Yazar: <%= link_to @recipe.user.nick, @recipe.user %></he>
+       <h3>Begenilme: <%= @recipe.likes %></h3>
+       <h3>Yorum sayisi: <%= @recipe.comments.count %></h3>
+       <h3>Goruntulenme: <%= @recipe.views %></h3>
+       <% if @recipe.user == current_user %>
+         <h3><%= link_to "Tarifi Editle", edit_recipe_path(@recipe) %></h3>
+         <h3><%= button_to "Tarifi Sil", @recipe, method: :delete, :confirm => 'Emin misin?' %></h3>
+       <% end %>
+
+     </div>
+   </div>
+
+</div>
+
    <h1>Yorumlar</h1>
-   <%= render "comments/comments" %>
-   <div class="span12">
+   <div class="span9">
+    <%= render "comments/comments" %>
+    </div>
+   <div class="span9">
       <%= will_paginate @comments, previous_label: "<", next_label: ">" %>
    </div>    
-   <%= render "comments/form" %>
 
+   <% if user_signed_in? %>
+    <%= render "comments/form" %>
+   <% end %>
 </div> 
