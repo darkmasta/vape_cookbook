@@ -38,6 +38,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
     if current_user.ip_address != request.remote_ip
       current_user.ip_address = request.remote_ip
+      @user = current_user
+      @user.save
       @recipe.increment(:likes, by = 1)
       @recipe.save
       render 'index'      
