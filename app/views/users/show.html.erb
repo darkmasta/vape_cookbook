@@ -1,16 +1,24 @@
-<% if @user.nick.empty? %>
-  <%= link_to "Nickinizi Belirleyin", edit_user_path %>
-<% end %>
+<div class="span3 galery">
+   <div class="nav-headers">
+     <% if @user.nick == nil && current_user == @user %>
+        <%= link_to "Nickinizi Belirleyin", edit_user_path %>
+     <% end %>
 
+     <h3><%= @user.nick %></h3><br>
+     <%= @user.ip_address %>
+   </div>
 
+     <ul class="nav nav-tabs nav-stacked">
+       <li><a href="/new"> Toplam Begenilme: 25</a></li>
+       <li><a href="/comments"> Popüler</a></li>
+       <li><a href="#"> Çok Beğenilenler</a></li>
+       <li><a href="#"> En çok Görüntülenenler</a></li>
+       <li><a href="#"> Kategoriler</a></li>
+       <li><a href="#"> Tavsiyelerimiz</a></li>
+  </ul> 
+</div>
 
-
-<%= @user.email %>
-<%= @user.ip_address %>
-
-
-<% if !@recipes.empty? %>
-  
+<% if !@recipes.empty? %>  
  <% @recipes.each do |recipe| %>
   <div class="span3 galery">
   <div class="menu-galery">
@@ -37,7 +45,8 @@
       <p><i class="icon-tags"></i> Taglar : <%= raw recipe.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
   </div>
 </div>
-  <% end %>
+<% end %>
+
 
   <div class="span12">
     <%#= will_paginate @recipes, previous_label: "<", next_label: ">" %>

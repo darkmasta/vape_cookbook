@@ -11,7 +11,10 @@
     </div>
   <% end %>
 
-  <% @comment.user_id = current_user.id %>
+  <% if user_signed_in? %>
+    <% @comment.user_id = current_user.id %>
+  <% end %>
+
   <div class="field">
     <%= f.text_area :content, rows: 8 %>
   </div>
