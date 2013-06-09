@@ -5,11 +5,11 @@
      <% end %>
 
      <h3><%= @user.nick %></h3><br>
-     <%= @user.ip_address %>
+     <%= link_to "Yeni Likit Tarifi Ekle", new_recipe_path %>
    </div>
 
      <ul class="nav nav-tabs nav-stacked">
-       <li><a href="/new"> Toplam Begenilme: 25</a></li>
+       <li><a href="/new"> Toplam Begenilme: </a></li>
        <li><a href="/comments"> Popüler</a></li>
        <li><a href="#"> Çok Beğenilenler</a></li>
        <li><a href="#"> En çok Görüntülenenler</a></li>
