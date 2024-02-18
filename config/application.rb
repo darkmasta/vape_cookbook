@@ -28,6 +28,9 @@ module VapeCookbookNew
 
     config.autoload_paths << Rails.root.join('lib')
 
+    config.autoload_paths << Rails.root.join('app/models/application_record.rb')
+
+
 
   end
 end
