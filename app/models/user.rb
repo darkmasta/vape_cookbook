@@ -1,13 +1,8 @@
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+class User < ApplicationRecord
+  has_secure_password
 
   has_many :recipes, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
-
-
-
-end             
+  has_many :comments, dependent: :destroy
+  has_many :likes
+  has_many :liked_recipes, through: :likes, source: :recipe
+end

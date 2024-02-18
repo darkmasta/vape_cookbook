@@ -1,12 +1,15 @@
-class Recipe < ActiveRecord::Base
+class Recipe < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
-  validates :user_id, presence: true
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
 
-  acts_as_taggable
+  after_initialize :set_defaults
 
+  private
 
-  scope :view_count, -> { Recipe.order("views DESC") }
-  scope :like_count, -> { Recipe.order("likes DESC") }
-  scope :new_items,  -> { Recipe.order("created_at DESC") }
+  def set_defaults
+    self.likes ||= 0
+    self.views ||= 0
+  end
 end

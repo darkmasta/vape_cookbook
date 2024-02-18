@@ -1,14 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
-class CommentsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
+class CommentsControllerTest < ActionDispatch::IntegrationTest
+  # test "the truth" do
+  #   assert true
+  # end
 end

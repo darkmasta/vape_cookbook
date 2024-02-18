@@ -1,32 +1,21 @@
-source 'https://rubygems.org'
-ruby "2.0.0"
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '4.0.0.rc1'
+ruby "3.0.0"
+gem "rails", "~> 7.0.8"
+gem "sqlite3", "~> 1.4"
+gem "puma", "~> 5.0"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+gem 'simple_command'
+gem "bootsnap", require: false
+gem 'mysql2'
 
+
+group :development, :test do
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+end
 
 group :development do
-  gem 'sqlite3', '1.3.7'
 end
-
-
-group :production do
-  gem 'pg', '0.15.1'
-end
-
-gem 'sass-rails', '4.0.0.rc1'
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.0'
-gem 'jquery-rails', '2.2.1'
-gem 'turbolinks'
-gem 'jbuilder', '~> 1.0.1'
-
-gem 'bootstrap-sass', '2.3.1.0'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
-
-group :doc do
-  gem 'sdoc', require: false
-end
-
-gem 'devise', github: 'plataformatec/devise'
-gem 'acts-as-taggable-on', '2.4.1'
